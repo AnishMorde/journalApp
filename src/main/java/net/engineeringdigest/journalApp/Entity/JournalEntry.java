@@ -1,38 +1,25 @@
 package net.engineeringdigest.journalApp.Entity;
 
+import lombok.*;
+import org.bson.types.ObjectId;
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 import org.springframework.stereotype.Component;
 
-@Component
+import java.time.LocalDateTime;
+import java.util.Date;
+
+@Document(collection = "journal_entries")
+@Data
+@NoArgsConstructor
+
 public class JournalEntry {
-    private Long id;
+    @Id
+    private ObjectId id;
+    @NonNull
     private String tittle;
     private String content;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
-
-    public String getTittle() {
-        return tittle;
-    }
-
-    public void setTittle(String tittle) {
-        this.tittle = tittle;
-    }
-
-
-    public String getContent() {
-        return content;
-    }
-
-    public void setContent(String content) {
-        this.content = content;
-    }
-
+    private LocalDateTime date;
 
 
 }
